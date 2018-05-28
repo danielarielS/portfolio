@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "./axios";
 import { BrowserRouter, Route, Link, Switch } from "react-router-dom";
-
+import { About } from "./about";
 export default class App extends React.Component {
     constructor(props) {
         super(props);
@@ -27,21 +27,29 @@ export default class App extends React.Component {
         return (
             <React.Fragment>
                 <BrowserRouter>
-                    <header>
-                        <Link to="/about" className="aboutNav">
-                            About Me
-                        </Link>
-                        <Link to="/contact" className="friendsNav">
-                            Contact
-                        </Link>
-                        <Link to="/" className="online_search">
-                            Portfolio
-                        </Link>
-                    </header>
-                    <section>
-                        <Route path="/about" render={() => <About />} />
-                        <Route path="/contact" render={() => <Contact />} />
-                    </section>
+                    <div>
+                        <header>
+                            <Link to="/" className="portfolioNav">
+                                Portfolio
+                            </Link>
+                            <Link to="/about" className="aboutNav">
+                                About Me
+                            </Link>
+                            <Link to="/contact" className="contactNav">
+                                Contact
+                            </Link>
+                        </header>
+                        <section>
+                            <img src="/back.jpeg" id="orangeImage" />
+                            <div />
+                            <Route
+                                exact
+                                path="/about"
+                                render={() => <About />}
+                            />
+                            <Route path="/contact" render={() => <Contact />} />
+                        </section>
+                    </div>
                 </BrowserRouter>
             </React.Fragment>
         );

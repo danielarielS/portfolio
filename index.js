@@ -4,7 +4,7 @@ const compression = require("compression");
 const bodyParser = require("body-parser");
 const cookieSession = require("cookie-session");
 const csurf = require("csurf");
-const { upload } = require("./s3");
+
 const uidSafe = require("uid-safe");
 const path = require("path");
 const fs = require("fs");
@@ -68,6 +68,9 @@ if (process.env.NODE_ENV != "production") {
 }
 
 app.get("/", function(req, res) {
+    res.sendFile(__dirname + "/index.html");
+});
+app.get("*", function(req, res) {
     res.sendFile(__dirname + "/index.html");
 });
 server.listen(process.env.PORT || 8080, function() {
